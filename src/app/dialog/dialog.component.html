@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add Item Page</h1>
+<div mat-dialog-content>
+    <form [formGroup]="productForm" >
+    <mat-form-field appearance="outline">
+        <mat-label>Name of Item</mat-label>
+        <input formControlName="productName" matInput placeholder="Enter Item Name">
+        <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>-->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Brand Name</mat-label>
+        <input formControlName="productCategory" matInput placeholder="Brand Name">
+        <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>-->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input formControlName="date" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <label id="example-radio-group-label">Pick your favorite season</label>
+        <mat-radio-group formControlName="freshness" aria-labelledby="example-radio-group-label" class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
+                {{fresh}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <mat-label >Price</mat-label>
+            <input formControlName="price" type="number" matInput placeholder="Price">
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Remarks</mat-label>
+            <input formControlName="remark" matInput placeholder="Enter Remarks">
+            <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button style="margin-left: 7px;" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button>
+</div>
